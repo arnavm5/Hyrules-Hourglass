@@ -9,14 +9,16 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.Font;
+import java.util.ArrayList;
 
 
 public class Game extends JComponent implements KeyListener, MouseListener, MouseMotionListener{
     //instance variables
     private int WIDTH;
     private int HEIGHT;
-    private Rectangle player;
-    private Rectangle ending;
+    private Player link;
+    private ArrayList<Rectangle> gameSceneObjects;
+
 
     //Default Constructor
     public Game()
@@ -24,13 +26,13 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         //initializing instance variables
         WIDTH = 1000;
         HEIGHT = 500;
-        player = new Rectangle(500,250,50,50);
-        ending = new Rectangle(-300, 0, 1000,500);
+        link = new Player(WIDTH/2 + - 25,HEIGHT/2 - 25, 100, 5, true);
+        gameSceneObjects = new ArrayList<Rectangle>();
 
         //Setting up the GUI
         JFrame gui = new JFrame();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setTitle("Learning Graphics");
+        gui.setTitle("Legend of Zelda: Hyrule's Hourglass");
         gui.setPreferredSize(new Dimension(WIDTH + 5, HEIGHT + 30));
         gui.setResizable(false);
         gui.getContentPane().add(this);
@@ -47,23 +49,20 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     public void keyPressed(KeyEvent e)
     {
         int key = e.getKeyCode();
-        if(key == 37){
-            player.setX(player.getX() - 5);
-        }
-        if(key == 39){
-            player.setX(player.getX() + 5);
-        }
-
+        System.out.println(key);
+        link.movement(key, gameSceneObjects);
     }
+
+
     //All your UI drawing goes in here
     public void paintComponent(Graphics g)
     {
+        g.setColor(Color.BLACK);
+        g.fillRect(0,0, WIDTH, HEIGHT);
         g.setColor(Color.RED);
-        g.fillRect(player.getX(), player.getY(), player.getW(), player.getH());
-        g.setColor(Color.BLUE);
-        g.fillRect(ending.getX(), ending.getY(), ending.getW(), ending.getH());
-
+        g.fillRect(link.getX(), link.getY(), link.getW(), link.getH());
     }
+
     public void loop()
     {
 

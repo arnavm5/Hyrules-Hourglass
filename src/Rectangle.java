@@ -1,6 +1,3 @@
-import java.awt.Graphics;
-import java.awt.Color;
-
 public class Rectangle {
 
     private int x;
