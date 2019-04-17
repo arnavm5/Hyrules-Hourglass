@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Character extends Rectangle {
 
@@ -7,8 +6,8 @@ public class Character extends Rectangle {
     private boolean isAttacking;
     private boolean isBlocking;
 
-    public Character(int x, int y, int health, int speed) {
-        super(x, y, 50, 50);
+    public Character(int x, int y, int health, int speed, boolean isOnEdge) {
+        super(x, y, 50, 60, isOnEdge);
         this.health = health;
         this.speed = speed;
         isAttacking = false;
