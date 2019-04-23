@@ -2,6 +2,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.Calendar;
 import javax.swing.ImageIcon;
 
 
@@ -9,6 +10,8 @@ public class Player extends Character{
 
     private boolean isInside;
     private boolean left, right, up, down;
+    private int lastKey;
+    private double timePressed;
 
     public Player(int x, int y, int health, int speed, boolean isInside) {
         super(x, y, health, speed, false);
@@ -17,25 +20,27 @@ public class Player extends Character{
         right = false;
         up = false;
         down = false;
+        lastKey = 1;
+        timePressed = 0;
     }
 
     public boolean isInside() {
         return isInside;
     }
 
-    private boolean isLeft() {
+    public boolean isLeft() {
         return left;
     }
 
-    private boolean isRight() {
+    public boolean isRight() {
         return right;
     }
 
-    private boolean isUp() {
+    public boolean isUp() {
         return up;
     }
 
-    private boolean isDown() {
+    public boolean isDown() {
         return down;
     }
 
@@ -60,11 +65,16 @@ public class Player extends Character{
     }
 
     public void keyPressedPlayer(int key){
+        timePressed += 0.6;
+        if(timePressed > 11) {
+            timePressed = timePressed % 11;
+        }
         if (key == 87) {
             up = true;
         }
         if (key == 83) {
             down = true;
+
         }
         if (key == 65) {
             left = true;
@@ -75,19 +85,26 @@ public class Player extends Character{
     }
 
     public void keyReleasedPlayer(int key){
+        //System.out.println(timePressed);
+        timePressed = 0;
         if (key == 87) {
             up = false;
+            lastKey = 1;
         }
         if (key == 83) {
             down = false;
+            lastKey = 2;
         }
         if (key == 65) {
             left = false;
+            lastKey = 3;
         }
         if (key == 68) {
             right = false;
+            lastKey = 4;
         }
     }
+
 
     public void movePlayer() {
         if (isInside) {
@@ -138,37 +155,54 @@ public class Player extends Character{
         ImageIcon link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile000.png"));
 
         if(up) {
-            link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile007.png"));
+            for(int i = 48; i <= timePressed + 48; i++) {
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+            }
         }
         else if(down) {
-            link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile030.png"));
+            for(int i = 24; i <= timePressed + 24; i++) {
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+            }
         }
         else if(left) {
-            link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile042.png"));
+            for(int i = 36; i <= timePressed + 36; i++) {
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+            }
         }
         else if(right) {
-            link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile018.png"));
+            for(int i = 12; i <= timePressed + 12; i++) {
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+            }
         }
-
-
-
+        else{
+            if(lastKey == 1){
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile000.png"));
+            }
+            else if(lastKey == 2){
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile024.png"));
+            }
+            else if(lastKey == 3){
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile037.png"));
+            }
+            else if(lastKey == 4){
+                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile013.png"));
+            }
+        }
         g2d.drawImage(link.getImage(), getX(), getY(), getW(), getH(), null);
-        //g.setColor(Color.RED);
-        //g.fillRect(getX(), getY(), getW(), getH());
     }
 
-    public void sceneCollision(Rectangle room){
-        if(getX() < room.getX()){
-            setX(room.getX());
+    public void sceneCollision(Rectangle room, int wallPixLenX, int wallPixLenY){
+        if(getX() < room.getX() + wallPixLenX){
+            setX(room.getX() + wallPixLenX);
         }
-        if(getX() + getW() > room.getX() + room.getW()){
-            setX(room.getX() + room.getW() - getW());
+        if(getX() + getW() > room.getX() + room.getW() - wallPixLenX){
+            setX(room.getX() + room.getW() - getW() - wallPixLenX);
         }
-        if(getY() < room.getY()){
-            setY(room.getY());
+        if(getY() < room.getY() + wallPixLenY){
+            setY(room.getY() + wallPixLenY);
         }
-        if(getY() + getH() > room.getY() + room.getH()){
-            setY(room.getY() + room.getH() - getH());
+        if(getY() + getH() > room.getY() + room.getH() - wallPixLenY){
+            setY(room.getY() + room.getH() - getH() - wallPixLenY);
         }
     }
 

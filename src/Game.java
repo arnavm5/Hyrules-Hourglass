@@ -9,7 +9,9 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.Font;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 
 public class Game extends JComponent implements KeyListener, MouseListener, MouseMotionListener{
@@ -20,8 +22,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     private ArrayList<Rectangle> gameSceneObjects;
     private Rectangle scene;
 
-
-
     //Default Constructor
     public Game()
     {
@@ -29,12 +29,14 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         WIDTH = 1000;
         HEIGHT = 500;
 
-        link = new Player(WIDTH/2 - 25,HEIGHT/2 - 25, 100, 5, true);
+        int tempW = 450;
+        int tempH = 350;
+        link = new Player(WIDTH/2 - 25,HEIGHT/2 - 30, 100, 3, false);
 
         gameSceneObjects = new ArrayList<Rectangle>();
-        scene = new Rectangle(WIDTH/2 - 225, HEIGHT/2 - 175, 450, 350, false);
+        scene = new Rectangle(WIDTH/2 - tempW/2, HEIGHT/2 - tempH/2, tempW, tempH, false);
 
-        //Charactes must be added last to gameSceneObjects
+        //Characters must be added last to gameSceneObjects
         gameSceneObjects.add(scene);
 
 
@@ -69,21 +71,23 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         g.setColor(Color.BLACK);
         g.fillRect(0,0, WIDTH, HEIGHT);
         for(Rectangle r : gameSceneObjects){
-            r.paintRect(Color.CYAN, g);
+            r.paintHouse(Color.CYAN, g);
         }
 
         //All characters must be drawn last
-        link.paintPlayer(g);
+        this.link.paintPlayer(g);
+
     }
 
     public void loop()
     {
-        link.sceneCollision(scene);
-        scene.screenCollision(WIDTH, HEIGHT, link);
+        link.sceneCollision(scene, 58, 62);
+        scene.screenCollision(link);
         link.movePlayer();
         link.moveScene(gameSceneObjects);
-        //link.movementSwitch(scene);
-        System.out.println(scene.isOnEdge());
+        link.movementSwitch(scene);
+        //System.out.println("SCENE isOnLEdge"+scene.isOnEdge());
+        //System.out.println("is link inside? "+link.isInside());
         repaint();
     }
 
@@ -92,32 +96,41 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     public void keyTyped(KeyEvent e)
     {
     }
+
     public void keyReleased(KeyEvent e)
     {
         int key = e.getKeyCode();
         link.keyReleasedPlayer(key);
     }
+
     public void mousePressed(MouseEvent e)
     {
     }
+
     public void mouseReleased(MouseEvent e)
     {
     }
+
     public void mouseClicked(MouseEvent e)
     {
     }
+
     public void mouseEntered(MouseEvent e)
     {
     }
+
     public void mouseExited(MouseEvent e)
     {
     }
+
     public void mouseMoved(MouseEvent e)
     {
     }
+
     public void mouseDragged(MouseEvent e)
     {
     }
+
     public void start(final int ticks){
         Thread gameThread = new Thread(){
             public void run(){

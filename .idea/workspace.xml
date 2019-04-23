@@ -1,109 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b2c72e0-fb9b-4726-98d2-ffe1d66c5310" name="Default Changelist" comment="Added spriteSheets and images">
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/Link Spritesheet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile000.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile006.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile007.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile008.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile009.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile010.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile011.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile012.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile013.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile014.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile015.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile016.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile017.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile018.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile019.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile020.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile021.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile022.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile023.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile025.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile026.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile027.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile028.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile029.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile030.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile031.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile032.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile033.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile034.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile035.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile036.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile037.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile038.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile039.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile040.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile041.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile042.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile043.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile044.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile045.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile046.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile047.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile048.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile049.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile050.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile051.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile052.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile053.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile054.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile055.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile056.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile057.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile058.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile059.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile060.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile061.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile062.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile063.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile064.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile065.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile066.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile067.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile068.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile069.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile070.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile071.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile072.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile073.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile074.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile075.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile076.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile077.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile078.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile079.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile080.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile081.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile082.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile083.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile084.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile085.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile086.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile087.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile088.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile089.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile090.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile091.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile092.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile093.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile094.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Assests/Link/tile095.png" afterDir="false" />
+    <list default="true" id="4b2c72e0-fb9b-4726-98d2-ffe1d66c5310" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MittalProject8/Character.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MittalProject8/Character.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MittalProject8/Assests/Link/tile000.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MittalProject8/Assests/Link/tile000.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MittalProject8/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MittalProject8/Game$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MittalProject8/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MittalProject8/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MittalProject8/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MittalProject8/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MittalProject8/Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MittalProject8/Rectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assests/Link/tile000.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assests/Link/tile000.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
@@ -116,13 +21,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/MittalProject8$Game.ic" NAME="Game Coverage Results" MODIFIED="1555889115487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="240" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="413">
+              <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Rectangle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="59" column="56" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
+            <state relative-caret-position="255">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -143,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/Character.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -151,13 +62,28 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="150" column="9" lean-forward="true" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+            <state relative-caret-position="688">
+              <caret line="193" column="16" selection-start-line="193" selection-start-column="16" selection-end-line="193" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Assests/Link/Link Spritesheet.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile056.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile048.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -166,6 +92,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -184,15 +111,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Rectangle.java" />
-        <option value="$PROJECT_DIR$/src/Game.java" />
         <option value="$PROJECT_DIR$/src/Character.java" />
+        <option value="$PROJECT_DIR$/src/Position.java" />
+        <option value="$PROJECT_DIR$/src/Game.java" />
         <option value="$PROJECT_DIR$/src/Player.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-7" />
+    <option name="width" value="1933" />
     <option name="height" value="1087" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -201,8 +129,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -219,12 +145,21 @@
               <item name="MittalProject8" type="b2602c69:ProjectViewProjectNode" />
               <item name="MittalProject8" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Assests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MittalProject8" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MittalProject8" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Assests" type="462c0819:PsiDirectoryNode" />
               <item name="Link" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -272,27 +207,37 @@
       <option name="presentableId" value="Default" />
       <updated>1553829098797</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added spriteSheets and images">
+      <created>1555460032211</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1555460032211</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1087" extended-state="0" />
+    <frame x="-7" y="0" width="1933" height="1087" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" weight="0.2297593" />
-      <window_info id="Structure" order="1" sideWeight="0.50120485" side_tool="true" weight="0.15565032" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6213873" visible="true" weight="0.14735718" />
+      <window_info id="Structure" order="1" sideWeight="0.37861273" side_tool="true" weight="0.14575547" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.139413" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22851153" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32914045" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32606438" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3281412" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.4538784" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.4528302" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32995194" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -301,22 +246,22 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" weight="0.15565032" />
-      <window_info id="Structure" order="1" sideWeight="0.50120485" side_tool="true" weight="0.15565032" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6213873" visible="true" weight="0.14575547" />
+      <window_info id="Structure" order="1" sideWeight="0.37861273" side_tool="true" visible="true" weight="0.14575547" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13811007" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2746331" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32606438" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3281412" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.4528302" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -336,6 +281,46 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added spriteSheets and images" />
     <option name="LAST_COMMIT_MESSAGE" value="Added spriteSheets and images" />
@@ -349,27 +334,163 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Link.java" />
-    <entry file="file://$PROJECT_DIR$/src/Rectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="59" column="56" selection-start-line="59" selection-start-column="56" selection-end-line="59" selection-end-column="56" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/Assests/house.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile086.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile074.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile060.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile036.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile021.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile010.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile000.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile007.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Position.java" />
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile037.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Calendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="1779" column="16" selection-start-line="1779" selection-start-column="16" selection-end-line="1779" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/event/KeyListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="61" column="47" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6496" column="32" selection-start-line="6496" selection-start-column="32" selection-end-line="6496" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile031.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile024.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile023.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile058.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile056.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/tile048.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Assests/Link/Link Spritesheet.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-850">
+          <caret line="183" column="22" selection-start-line="183" selection-start-column="22" selection-end-line="183" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="300" column="30" selection-start-line="300" selection-start-column="30" selection-end-line="300" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/event/KeyEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-886">
+          <caret line="1423" column="19" selection-start-line="1423" selection-start-column="19" selection-end-line="1423" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Character.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/EventDispatchThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/jre/lib/rt.jar!/sun/instrument/InstrumentationImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="257" selection-start-line="257" selection-end-line="257" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/URLClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5542">
+          <caret line="380" selection-start-line="380" selection-end-line="380" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="353" column="23" selection-start-line="353" selection-start-column="23" selection-end-line="353" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="333" selection-start-line="333" selection-end-line="333" />
+          <folding>
+            <element signature="e#11597#11598#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="487" selection-start-line="487" selection-end-line="487" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        <state relative-caret-position="413">
+          <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -378,8 +499,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="150" column="9" lean-forward="true" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+        <state relative-caret-position="688">
+          <caret line="193" column="16" selection-start-line="193" selection-start-column="16" selection-end-line="193" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
