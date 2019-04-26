@@ -53,7 +53,7 @@ public class Rectangle {
         isOnEdge = onEdge;
     }
 
-    public void paintHouse(Color c, Graphics g){
+    public void paintHouse(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
         ImageIcon house = new ImageIcon(Rectangle.class.getResource("Assests\\house.png"));
         g2d.drawImage(house.getImage(), getX(), getY(), getW(), getH(), null);
@@ -62,30 +62,6 @@ public class Rectangle {
     }
 
     public void screenCollision(Player p){
-
-        /*if(p.getX() >= w/2 - 50 || p.getX() <= w/2 + 50){
-            if(p.getY() >= h/2 - 50 || p.getY() <= h/2 + 50){
-                setOnEdge(false);
-            }
-            if(getX() < 0){
-                setX(0);
-                setOnEdge(true);
-            }
-            else if(getX() + getW() > w){
-                setX(w - getW());
-                setOnEdge(true);
-            }
-
-            if(getY() < 0){
-                setY(0);
-                setOnEdge(true);
-            }
-            else if(getY() + getH() > h){
-                setY(h - getH());
-                setOnEdge(true);
-            }
-        }*/
-
         int dist = 100;
         if(p.isLeft() || p.isRight()){
             if(Math.abs(p.getX() - getX()) < dist || Math.abs((p.getX() + p.getW()) - (getX() + w)) < dist)
@@ -101,6 +77,13 @@ public class Rectangle {
             else
                 setOnEdge(false);
         }
+    }
+
+    public void recCollision(Rectangle r, int wallPixLenX, int wallPixLenY){
+        //if(x + wallPixLenX < r.getX() + r.getW() && x + w + wallPixLenX > r.getX() && y + wallPixLenY < r.getY() + r.getH()  && y + h + wallPixLenY > r.getY()){
+        //    System.out.println("Collision");
+        //}
+
 
 
     }

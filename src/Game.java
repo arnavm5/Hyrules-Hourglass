@@ -20,7 +20,8 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     private int HEIGHT;
     private Player link;
     private ArrayList<Rectangle> gameSceneObjects;
-    private Rectangle scene;
+    private ArrayList<Rectangle> houseObjects;
+    private Rectangle house, firePlace;
 
     //Default Constructor
     public Game()
@@ -29,15 +30,18 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         WIDTH = 1000;
         HEIGHT = 500;
 
-        int tempW = 450;
-        int tempH = 350;
+        int houseW = 450;
+        int houseH = 350;
         link = new Player(WIDTH/2 - 25,HEIGHT/2 - 30, 100, 3, false);
 
-        gameSceneObjects = new ArrayList<Rectangle>();
-        scene = new Rectangle(WIDTH/2 - tempW/2, HEIGHT/2 - tempH/2, tempW, tempH, false);
+        houseObjects = new ArrayList<Rectangle>();
+        house = new Rectangle(WIDTH/2 - houseW/2, HEIGHT/2 - houseH/2, houseW, houseH, false);
+        firePlace = new Rectangle(182 + house.getX(), 128 + house.getY(), 29, 30, false);
 
         //Characters must be added last to gameSceneObjects
-        gameSceneObjects.add(scene);
+        houseObjects.add(house);
+        houseObjects.add(firePlace);
+        gameSceneObjects = houseObjects;
 
 
         //Setting up the GUI
@@ -70,10 +74,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     {
         g.setColor(Color.BLACK);
         g.fillRect(0,0, WIDTH, HEIGHT);
-        for(Rectangle r : gameSceneObjects){
-            r.paintHouse(Color.CYAN, g);
-        }
-
+        house.paintHouse(g);
         //All characters must be drawn last
         this.link.paintPlayer(g);
 
@@ -81,11 +82,13 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
 
     public void loop()
     {
-        link.sceneCollision(scene, 58, 62);
-        scene.screenCollision(link);
+        link.timePressedMove();
+        link.sceneCollision(house, 58, 62);
+        house.screenCollision(link);
+        //firePlace.recCollision(link, 0, -16);
         link.movePlayer();
         link.moveScene(gameSceneObjects);
-        link.movementSwitch(scene);
+        link.movementSwitch(house);
         //System.out.println("SCENE isOnLEdge"+scene.isOnEdge());
         //System.out.println("is link inside? "+link.isInside());
         repaint();

@@ -65,10 +65,6 @@ public class Player extends Character{
     }
 
     public void keyPressedPlayer(int key){
-        timePressed += 0.6;
-        if(timePressed > 11) {
-            timePressed = timePressed % 11;
-        }
         if (key == 87) {
             up = true;
         }
@@ -86,7 +82,6 @@ public class Player extends Character{
 
     public void keyReleasedPlayer(int key){
         //System.out.println(timePressed);
-        timePressed = 0;
         if (key == 87) {
             up = false;
             lastKey = 1;
@@ -105,6 +100,17 @@ public class Player extends Character{
         }
     }
 
+    public void timePressedMove(){
+        if(up || down || left || right){
+            timePressed += 0.4;
+            if(timePressed > 11) {
+                timePressed = timePressed % 11;
+            }
+        }
+        else{
+            timePressed = 0;
+        }
+    }
 
     public void movePlayer() {
         if (isInside) {
