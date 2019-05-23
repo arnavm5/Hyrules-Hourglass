@@ -78,13 +78,4 @@ public class Rectangle {
                 setOnEdge(false);
         }
     }
-
-    public void recCollision(Rectangle r, int wallPixLenX, int wallPixLenY){
-        //if(x + wallPixLenX < r.getX() + r.getW() && x + w + wallPixLenX > r.getX() && y + wallPixLenY < r.getY() + r.getH()  && y + h + wallPixLenY > r.getY()){
-        //    System.out.println("Collision");
-        //}
-
-
-
-    }
 }

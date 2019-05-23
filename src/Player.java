@@ -195,6 +195,8 @@ public class Player extends Character{
             }
         }
         g2d.drawImage(link.getImage(), getX(), getY(), getW(), getH(), null);
+        g.setColor(Color.BLUE);
+        g.fillRect(getX(), getY(), getW(), getH());
     }
 
     public void sceneCollision(Rectangle room, int wallPixLenX, int wallPixLenY){
@@ -221,7 +223,25 @@ public class Player extends Character{
         }
     }
 
+    public void recCollision(Rectangle r, int wallPixLenX, int wallPixLenY){
+        int linkRX = getX() + wallPixLenX;
+        int linkRW = getX() + getW() - wallPixLenX;
+        int linkRY = getY() + wallPixLenY;
+        int linkRH = getY() + getH();
 
-
-
+        if(r.getX() < linkRW && r.getX() + r.getW() > linkRX && r.getY() < linkRH && r.getY() + r.getH() > linkRY) {
+            if (linkRX + getSpeed() <= r.getX() + r.getW() && linkRX > r.getX() + r.getW()*0.75) {
+                setX(r.getX() + r.getW() - wallPixLenX);
+            }
+            else if (linkRW + getSpeed() >= r.getX() && linkRW < r.getX() + r.getW()*0.25) {
+                setX(r.getX() - getW() + wallPixLenX);
+            }
+            if (linkRY + getSpeed() >= r.getY() + r.getH()) {
+                setY(r.getY() + r.getH() - wallPixLenY);
+            }
+            else if (linkRH + getSpeed()> r.getY() && linkRH < r.getY() + r.getH()/2) {
+                setY(r.getY() - getH());
+            }
+        }
+    }
 }
