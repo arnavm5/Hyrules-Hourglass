@@ -20,8 +20,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     private int HEIGHT;
     private Player link;
     private ArrayList<Rectangle> gameSceneObjects;
-    private ArrayList<Rectangle> houseObjects;
-    private Rectangle house, firePlace1, firePlace2, workshopTable, table, chair1, chair2, fence1, fence2, picket;
+    private Rectangle house;
     private boolean initiallyInside;
 
     //Default Constructor
@@ -36,20 +35,8 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         link = new Player(WIDTH/2 - 25,HEIGHT/2 - 30, 100, 3, true);
         initiallyInside = link.isInside();
 
-        houseObjects = new ArrayList<Rectangle>();
         house = new Rectangle(WIDTH/2 - houseW/2, HEIGHT/2 - houseH/2, houseW, houseH, false);
-        firePlace1 = new Rectangle(182 + house.getX(), 128 + house.getY(), 29, 30, false);
-        firePlace2 = new Rectangle(246 + house.getX(), 128 + house.getY(), 29, 30, false);
-        workshopTable = new Rectangle(75 + house.getX(), 70 + house.getY(), 44, 36, false);
-        table = new Rectangle((int)(160 * 1.875) + house.getX(), (80 * 2) + house.getY(), (int)(207 * 1.875) - (int)(160 * 1.875), (110 * 2)- (80 * 2), true);
-
-        //Characters must be added last to gameSceneObjects
-        //houseObjects.add(house);
-        houseObjects.add(firePlace1);
-        houseObjects.add(firePlace2);
-        houseObjects.add(workshopTable);
-        houseObjects.add(table);
-        gameSceneObjects = houseObjects;
+        gameSceneObjects = Scene.getHouseSceneObjects(house);
 
 
         //Setting up the GUI
@@ -84,7 +71,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         g.fillRect(0,0, WIDTH, HEIGHT);
 
         house.paintHouse(g);
-       // g.fillRect(table.getX(), table.getY(), table.getW(), table.getH());
+        g.fillRect(gameSceneObjects.get(4).getX(), gameSceneObjects.get(4).getY(), gameSceneObjects.get(4).getW(), gameSceneObjects.get(4).getH());
         //All characters must be drawn last
         this.link.paintPlayer(g);
 
@@ -96,7 +83,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         link.sceneCollision(house, 58, 62);
         house.screenCollision(link);
         for(Rectangle r: gameSceneObjects)
-            link.recCollision(r, 9, 16);
+            link.recCollision(r, 5, 16);
         link.movePlayer();
         link.moveScene(gameSceneObjects);
         if(!initiallyInside)

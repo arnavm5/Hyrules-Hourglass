@@ -196,7 +196,7 @@ public class Player extends Character{
         }
         g2d.drawImage(link.getImage(), getX(), getY(), getW(), getH(), null);
         g.setColor(Color.BLUE);
-        g.fillRect(getX(), getY(), getW(), getH());
+        //g.fillRect(getX(), getY(), getW(), getH());
     }
 
     public void sceneCollision(Rectangle room, int wallPixLenX, int wallPixLenY){
@@ -230,19 +230,22 @@ public class Player extends Character{
         int linkRH = getY() + getH();
 
         if(r.getX() < linkRW && r.getX() + r.getW() > linkRX && r.getY() < linkRH && r.getY() + r.getH() > linkRY) {
-                if (linkRX + getSpeed() <= r.getX() + r.getW() && linkRX > r.getX() + r.getW() * 0.75 && left) {
+                if (linkRX - getSpeed() <= r.getX() + r.getW() && linkRX + getSpeed() > r.getX() + r.getW() * 0.80 && left) {
                     setX(r.getX() + r.getW() - wallPixLenX);
+                    System.out.println("X Right");
                 }
-                else if (linkRW + getSpeed() >= r.getX() && linkRW < r.getX() + r.getW() * 0.25 && right) {
+                else if (linkRW + getSpeed() >= r.getX() && linkRW - getSpeed() < r.getX() + r.getW() * 0.20 && right) {
                     setX(r.getX() - getW() + wallPixLenX);
+                    System.out.println("X Left");
                 }
-                if (linkRY + getSpeed() <= r.getY() + r.getH() && linkRY > r.getY() + r.getH() * 0.75 && up) {
+                else if (linkRY - getSpeed() <= r.getY() + r.getH() && linkRY + getSpeed() > r.getY() + r.getH() * 0.80 && up) {
                     setY(r.getY() + r.getH() - wallPixLenY);
+                    System.out.println("Y Down");
                 }
-                else if (linkRH + getSpeed() >= r.getY() && linkRH < r.getY() + r.getH() * 0.25 && down) {
+                else if (linkRH + getSpeed() >= r.getY() && linkRH - getSpeed() < r.getY() + r.getH() * 0.20 && down) {
                     setY(r.getY() - getH());
+                    System.out.println("Y Up");
                 }
         }
-    }
     }
 }
