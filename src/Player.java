@@ -230,19 +230,19 @@ public class Player extends Character{
         int linkRH = getY() + getH();
 
         if(r.getX() < linkRW && r.getX() + r.getW() > linkRX && r.getY() < linkRH && r.getY() + r.getH() > linkRY) {
-                if (linkRX - getSpeed() <= r.getX() + r.getW() && linkRX + getSpeed() > r.getX() + r.getW() * 0.80 && left) {
+                if (linkRX - getSpeed() <= r.getX() + r.getW() && linkRX + getSpeed() > r.getX() + r.getW() * 0.90 && left) {
                     setX(r.getX() + r.getW() - wallPixLenX);
                     System.out.println("X Right");
                 }
-                else if (linkRW + getSpeed() >= r.getX() && linkRW - getSpeed() < r.getX() + r.getW() * 0.20 && right) {
+                else if (linkRW + getSpeed() >= r.getX() && linkRW - getSpeed() < r.getX() + r.getW() * 0.10 && right) {
                     setX(r.getX() - getW() + wallPixLenX);
                     System.out.println("X Left");
                 }
-                else if (linkRY - getSpeed() <= r.getY() + r.getH() && linkRY + getSpeed() > r.getY() + r.getH() * 0.80 && up) {
+                else if (linkRY - getSpeed() <= r.getY() + r.getH() && linkRY + getSpeed() > r.getY() + r.getH() * 0.90 && up) {
                     setY(r.getY() + r.getH() - wallPixLenY);
                     System.out.println("Y Down");
                 }
-                else if (linkRH + getSpeed() >= r.getY() && linkRH - getSpeed() < r.getY() + r.getH() * 0.20 && down) {
+                else if (linkRH + getSpeed() >= r.getY() && linkRH - getSpeed() < r.getY() + r.getH() * 0.10 && down) {
                     setY(r.getY() - getH());
                     System.out.println("Y Up");
                 }

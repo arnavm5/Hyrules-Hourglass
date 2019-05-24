@@ -71,7 +71,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         g.fillRect(0,0, WIDTH, HEIGHT);
 
         house.paintHouse(g);
-        g.fillRect(gameSceneObjects.get(4).getX(), gameSceneObjects.get(4).getY(), gameSceneObjects.get(4).getW(), gameSceneObjects.get(4).getH());
+        g.fillRect(gameSceneObjects.get(7).getX(), gameSceneObjects.get(7).getY(), gameSceneObjects.get(7).getW(), gameSceneObjects.get(7).getH());
         //All characters must be drawn last
         this.link.paintPlayer(g);
 
