@@ -129,28 +129,32 @@ public class Player extends Character{
         }
     }
 
-    public void moveScene(ArrayList<Rectangle> gameSceneObjects) {
+    public void moveScene(ArrayList<Rectangle> gameSceneObjects, Rectangle r) {
         if(!isInside){
-            if(gameSceneObjects.size() != 0) {
+            if(gameSceneObjects.size() > 0) {
                 if (up) {
                     for (Rectangle o : gameSceneObjects) {
                         o.setY(o.getY() + getSpeed());
                     }
+                    r.setY(r.getY() + getSpeed());
                 }
                 if (down) {
                     for (Rectangle o : gameSceneObjects) {
                         o.setY(o.getY() - getSpeed());
                     }
+                    r.setY(r.getY() - getSpeed());
                 }
                 if (left) {
                     for (Rectangle o : gameSceneObjects) {
                         o.setX(o.getX() + getSpeed());
                     }
+                    r.setX(r.getX() + getSpeed());
                 }
                 if (right) {
                     for (Rectangle o : gameSceneObjects) {
                         o.setX(o.getX() - getSpeed());
                     }
+                    r.setX(r.getX() - getSpeed());
                 }
             }
         }
@@ -248,4 +252,6 @@ public class Player extends Character{
                 }
         }
     }
+
+
 }

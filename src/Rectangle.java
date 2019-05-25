@@ -55,11 +55,15 @@ public class Rectangle {
 
     public void paintHouse(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
-        ImageIcon house = new ImageIcon(Rectangle.class.getResource("Assests\\house.png"));
-        g2d.drawImage(house.getImage(), getX(), getY(), getW(), getH(), null);
-        //g.setColor(c);
-        //g.fillRect(getX(), getY(), getW(), getH());
-    }
+        ImageIcon back;
+        //if(isInHouse() && scene == 0) {
+            back = new ImageIcon(Rectangle.class.getResource("Assests\\house.png"));
+            g2d.drawImage(back.getImage(), getX(), getY(),getW(), getH(), null);
+        //}
+        //else if(isInVillage() && scene == 1) {
+        //    back = new ImageIcon(Rectangle.class.getResource("Assests\\village.png"));
+        //    g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
+        }
 
     public void screenCollision(Player p){
         int dist = 100;

@@ -20,8 +20,10 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     private int HEIGHT;
     private Player link;
     private ArrayList<Rectangle> gameSceneObjects;
-    private Rectangle house;
+    private Rectangle house, village, castle, forest;
     private boolean initiallyInside;
+    private Scene scene;
+    private int count;
 
     //Default Constructor
     public Game()
@@ -33,11 +35,13 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         int houseW = 450;
         int houseH = 350;
         link = new Player(WIDTH/2 - 25,HEIGHT/2 - 30, 100, 3, true);
-        initiallyInside = link.isInside();
+
 
         house = new Rectangle(WIDTH/2 - houseW/2, HEIGHT/2 - houseH/2, houseW, houseH, false);
-        gameSceneObjects = Scene.getHouseSceneObjects(house);
-
+        village = new Rectangle(-610, -500, 1710, 1400, false);
+        scene = new Scene();
+        gameSceneObjects = scene.getHouseSceneObjects(house);
+        count = 1;
 
         //Setting up the GUI
         JFrame gui = new JFrame();
@@ -69,9 +73,13 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     {
         g.setColor(Color.BLACK);
         g.fillRect(0,0, WIDTH, HEIGHT);
-
-        house.paintHouse(g);
-        g.fillRect(gameSceneObjects.get(7).getX(), gameSceneObjects.get(7).getY(), gameSceneObjects.get(7).getW(), gameSceneObjects.get(7).getH());
+        scene.paintScene(g, house, 0);
+        scene.paintScene(g, village, 1);
+        if(scene.isInVillage() && count == 1){
+            gameSceneObjects = scene.getVillageSceneObjects(village);
+            count ++;
+        }
+        //g.fillRect(gameSceneObjects.get(0).getX(), gameSceneObjects.get(0).getY(), gameSceneObjects.get(0).getW(), gameSceneObjects.get(0).getH());
         //All characters must be drawn last
         this.link.paintPlayer(g);
 
@@ -80,16 +88,26 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     public void loop()
     {
         link.timePressedMove();
-        link.sceneCollision(house, 58, 62);
-        house.screenCollision(link);
-        for(Rectangle r: gameSceneObjects)
+
+        if(scene.isInHouse()) {
+            link.sceneCollision(house, 58, 62);
+            house.screenCollision(link);
+            link.moveScene(gameSceneObjects, house);
+            System.out.println("In House:" + scene.isInHouse());
+        }
+        else if(scene.isInVillage()){
+            link.sceneCollision(village, 0, 0);
+            village.screenCollision(link);
+            link.moveScene(gameSceneObjects, village);
+            link.movementSwitch(village);
+            //System.out.println("In Village:" + scene.isInVillage());
+            //System.out.println(link.getX() + "," + link.getY());
+        }
+        for(Rectangle r: gameSceneObjects) {
             link.recCollision(r, 5, 16);
+        }
         link.movePlayer();
-        link.moveScene(gameSceneObjects);
-        if(!initiallyInside)
-            link.movementSwitch(house);
-        //System.out.println("SCENE isOnLEdge"+scene.isOnEdge());
-        //System.out.println("is link inside? "+link.isInside());
+        scene.sceneChangeExit(link, gameSceneObjects);
         repaint();
     }
 
