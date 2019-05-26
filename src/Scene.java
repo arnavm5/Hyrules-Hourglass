@@ -6,18 +6,26 @@ public class Scene {
 
     private ArrayList<Rectangle> houseObjects, villageObjects, castleObjects, forestObjects;;
     private boolean inHouse, inVillage, inCastle, inForest;
-    private Rectangle houseExit , villageExit = new Rectangle(0,0,0,0, false), castleExit, forestExit;
-    private Rectangle houseEnter = new Rectangle(0,0,0,0, false), villageEnter, castleEnter, forestEnter;
+    private Rectangle houseExit , villageExitCastle, villageExitForest;
+    private Rectangle houseEnter, villageEnterCastle, villageEnterForest;
     private double timeSceneChange;
 
     public Scene(){
         houseObjects = new ArrayList<Rectangle>();
         villageObjects = new ArrayList<Rectangle>();
+        castleObjects = new ArrayList<Rectangle>();
+        forestObjects = new ArrayList<Rectangle>();
         inHouse = true;
         inVillage = false;
         inCastle = false;
         inForest = false;
         timeSceneChange = 0;
+        houseExit  = new Rectangle(0,0,0,0, false);
+        villageExitCastle = new Rectangle(0,0,0,0, false);
+        villageExitForest = new Rectangle(0,0,0,0, false);
+        houseEnter = new Rectangle(0,0,0,0, false);
+        villageEnterCastle = new Rectangle(0,0,0,0, false);
+        villageEnterForest = new Rectangle(0,0,0,0, false);
     }
 
     public ArrayList<Rectangle> getHouseSceneObjects(Rectangle background){
@@ -43,27 +51,27 @@ public class Scene {
 
     public ArrayList<Rectangle> getVillageSceneObjects(Rectangle background) {
         Rectangle firePlace1;
-        houseEnter = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
-        villageExit = new Rectangle(scale(255, 1.95) + background.getX(), scale(70, 1.4) + background.getY(), scale(315, 1.95) - scale(255, 1.95), scale(75, 1.4) - scale(70, 1.4), false);
+        houseEnter = new Rectangle(scale(425, 1.5) + background.getX(), scale(385, 1.45) + background.getY(), scale(430, 1.5) - scale(425, 1.5), scale(390, 1.45) - scale(385, 1.45), false);
+        villageExitCastle = new Rectangle(scale(255, 1.5) + background.getX(), scale(70, 1.45) + background.getY(), scale(315, 1.5) - scale(255, 1.5), scale(75, 1.45) - scale(70, 1.45), false);
+        villageExitForest = new Rectangle(scale(55, 1.5) + background.getX(), scale(605, 1.45) + background.getY(), scale(60, 1.5) - scale(55, 1.5), scale(635, 1.45) - scale(605, 1.45), false);
         villageObjects.add(houseEnter);
-        villageObjects.add(villageExit);
+        villageObjects.add(villageExitCastle);
+        villageObjects.add(villageExitForest);
         return villageObjects;
     }
 
     public ArrayList<Rectangle> getCastleSceneObjects(Rectangle background) {
         Rectangle firePlace1;
-        houseEnter = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
-
-        villageObjects.add(houseEnter);
-
-        return villageObjects;
+        villageEnterCastle = new Rectangle(scale(485, 1.3) + background.getX(), scale(505, 1.55) + background.getY(), scale(525, 1.3) - scale(485, 1.3), scale(510, 1.55) - scale(505, 1.55), false);
+        castleObjects.add(villageEnterCastle);
+        return castleObjects;
     }
 
     public ArrayList<Rectangle> getForestSceneObjects(Rectangle background) {
         Rectangle firePlace1;
-        houseEnter = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
-        villageObjects.add(houseEnter);
-        return villageObjects;
+        villageEnterForest = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
+        forestObjects.add(villageExitForest);
+        return forestObjects;
     }
 
     private static int scale(int x, double scale){
@@ -112,16 +120,24 @@ public class Scene {
             inHouse = false;
             inVillage = true;
             link.setInside(false);
-            link.setX(600);
-            link.setY(250);
+            link.setX(615);
+            link.setY(205);
         }
-        else if(inVillage && villageExit.getX() < linkRW && villageExit.getX() + villageExit.getW() > linkRX && villageExit.getY() < linkRH && villageExit.getY() + villageExit.getH() > linkRY && link.isUp()){
+        else if(inVillage && villageExitCastle.getX() < linkRW && villageExitCastle.getX() + villageExitCastle.getW() > linkRX && villageExitCastle.getY() < linkRH && villageExitCastle.getY() + villageExitCastle.getH() > linkRY && link.isUp()){
             System.out.println("Exit");
             inVillage = false;
             inCastle = true;
             link.setInside(false);
-            link.setX(525);
+            link.setX(515);
             link.setY(350);
+        }
+        else if(inVillage && villageExitForest.getX() < linkRW && villageExitForest.getX() + villageExitForest.getW() > linkRX && villageExitForest.getY() < linkRH && villageExitForest.getY() + villageExitForest.getH() > linkRY && link.isLeft()){
+            System.out.println("Exit");
+            inVillage = false;
+            inForest = true;
+            link.setInside(true);
+            link.setX(150);
+            link.setY(20);
         }
     }
 
@@ -138,6 +154,23 @@ public class Scene {
             link.setX(475);
             link.setY(300);
         }
+        else if(inCastle && villageEnterCastle.getX() < linkRW && villageEnterCastle.getX() + villageEnterCastle.getW() > linkRX && villageEnterCastle.getY() < linkRH && villageEnterCastle.getY() + villageEnterCastle.getH() > linkRY && link.isDown()){
+            System.out.println("Enter");
+            inVillage = true;
+            inCastle = false;
+            link.setInside(false);
+            link.setX(575);
+            link.setY(125);
+        }
+        else if(inForest && villageEnterForest.getX() < linkRW && villageEnterForest.getX() + villageEnterForest.getW() > linkRX && villageEnterForest.getY() < linkRH && villageEnterForest.getY() + villageEnterForest.getH() > linkRY && link.isUp()){
+            System.out.println("Enter");
+            inVillage = true;
+            inForest = false;
+            link.setInside(false);
+            link.setX(575);
+            link.setY(125);
+        }
+
     }
 
     public void paintScene(Graphics g, Rectangle r, int scene){
@@ -157,7 +190,7 @@ public class Scene {
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
         else if(isInForest() && scene == 3) {
-            back = new ImageIcon(Rectangle.class.getResource("Assests\\village.png"));
+            back = new ImageIcon(Rectangle.class.getResource("Assests\\forest.png"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
 

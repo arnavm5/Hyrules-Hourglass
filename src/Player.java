@@ -48,19 +48,19 @@ public class Player extends Character{
         isInside = inside;
     }
 
-    private void setLeft(boolean left) {
+    public void setLeft(boolean left) {
         this.left = left;
     }
 
-    private void setRight(boolean right) {
+    public void setRight(boolean right) {
         this.right = right;
     }
 
-    private void setUp(boolean up) {
+    public void setUp(boolean up) {
         this.up = up;
     }
 
-    private void setDown(boolean down) {
+    public void setDown(boolean down) {
         this.down = down;
     }
 

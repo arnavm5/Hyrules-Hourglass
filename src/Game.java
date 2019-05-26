@@ -37,8 +37,9 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
 
 
         house = new Rectangle(WIDTH/2 - houseW/2, HEIGHT/2 - houseH/2, houseW, houseH, false);
-        village = new Rectangle(-210, -300, 1300, 1000, false);
-        castle = new Rectangle(-102, -501, 1300, 1000, false);
+        village = new Rectangle(-1, -342, 1000, 1000, false);
+        castle = new Rectangle(-117, -340, 1300, 825, false);
+        forest = new Rectangle(0, 0, 1000, 520, false);
         scene = new Scene();
         gameSceneObjects = scene.getHouseSceneObjects(house);
         count = 0;
@@ -76,8 +77,9 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         scene.paintScene(g, house, 0);
         scene.paintScene(g, village, 1);
         scene.paintScene(g, castle, 2);
+        scene.paintScene(g, forest, 3);
 
-        //g.fillRect(gameSceneObjects.get(0).getX(), gameSceneObjects.get(0).getY(), gameSceneObjects.get(0).getW(), gameSceneObjects.get(0).getH());
+        //g.fillRect(gameSceneObjects.get(2).getX(), gameSceneObjects.get(2).getY(), gameSceneObjects.get(2).getW(), gameSceneObjects.get(2).getH());
         //All characters must be drawn last
         this.link.paintPlayer(g);
 
@@ -86,7 +88,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     public void loop()
     {
         link.timePressedMove();
-        System.out.println(count);
         if(scene.isInHouse()) {
             if(count % 2 == 0){
                 gameSceneObjects = scene.getHouseSceneObjects(house);
@@ -106,6 +107,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
             village.screenCollision(link, 200);
             link.moveScene(gameSceneObjects, village);
             link.movementSwitch(village);
+            System.out.println("In Village:" + scene.isInVillage());
         }
         else if(scene.isInCastle()){
             if(count % 2 == 0){
@@ -113,9 +115,21 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
                 count++;
             }
             link.sceneCollision(castle, 56, 0);
-            village.screenCollision(link, 200);
+            castle.screenCollision(link, 200);
             link.moveScene(gameSceneObjects, castle);
             link.movementSwitch(castle);
+            System.out.println("In Castle:" + scene.isInCastle());
+        }
+        else if(scene.isInForest()){
+            if(count % 2 == 0){
+                gameSceneObjects = scene.getForestSceneObjects(forest);
+                count++;
+            }
+            link.sceneCollision(forest, 56, 0);
+            forest.screenCollision(link, 200);
+            link.moveScene(gameSceneObjects, forest);
+            //link.movementSwitch(forest);
+            System.out.println("In Forest:" + scene.isInForest());
         }
         for(Rectangle r: gameSceneObjects) {
             link.recCollision(r, 5, 16);
@@ -123,8 +137,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         link.movePlayer();
         scene.sceneChangeExit(link);
         scene.sceneChangeEnter(link);
-        System.out.println("CastleX" + castle.getX());
-        System.out.println("CastleY" + castle.getY());
         repaint();
     }
 
