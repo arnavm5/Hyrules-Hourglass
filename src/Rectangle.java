@@ -53,20 +53,7 @@ public class Rectangle {
         isOnEdge = onEdge;
     }
 
-    public void paintHouse(Graphics g){
-        Graphics2D g2d = (Graphics2D)g;
-        ImageIcon back;
-        //if(isInHouse() && scene == 0) {
-            back = new ImageIcon(Rectangle.class.getResource("Assests\\house.png"));
-            g2d.drawImage(back.getImage(), getX(), getY(),getW(), getH(), null);
-        //}
-        //else if(isInVillage() && scene == 1) {
-        //    back = new ImageIcon(Rectangle.class.getResource("Assests\\village.png"));
-        //    g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
-        }
-
-    public void screenCollision(Player p){
-        int dist = 100;
+    public void screenCollision(Player p, int dist){
         if(p.isLeft() || p.isRight()){
             if(Math.abs(p.getX() - getX()) < dist || Math.abs((p.getX() + p.getW()) - (getX() + w)) < dist)
                 setOnEdge(true);

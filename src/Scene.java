@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class Scene {
 
-    private ArrayList<Rectangle> houseObjects, villageObjects;
+    private ArrayList<Rectangle> houseObjects, villageObjects, castleObjects, forestObjects;;
     private boolean inHouse, inVillage, inCastle, inForest;
-    private Rectangle houseExit, villageExit, castleExit, forestExit;
-    private int timeSceneChange;
+    private Rectangle houseExit , villageExit = new Rectangle(0,0,0,0, false), castleExit, forestExit;
+    private Rectangle houseEnter = new Rectangle(0,0,0,0, false), villageEnter, castleEnter, forestEnter;
+    private double timeSceneChange;
 
     public Scene(){
         houseObjects = new ArrayList<Rectangle>();
@@ -42,8 +43,26 @@ public class Scene {
 
     public ArrayList<Rectangle> getVillageSceneObjects(Rectangle background) {
         Rectangle firePlace1;
-        firePlace1 = new Rectangle(0, 0, 0, 0, false);
-        villageObjects.add(firePlace1);
+        houseEnter = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
+        villageExit = new Rectangle(scale(255, 1.95) + background.getX(), scale(70, 1.4) + background.getY(), scale(315, 1.95) - scale(255, 1.95), scale(75, 1.4) - scale(70, 1.4), false);
+        villageObjects.add(houseEnter);
+        villageObjects.add(villageExit);
+        return villageObjects;
+    }
+
+    public ArrayList<Rectangle> getCastleSceneObjects(Rectangle background) {
+        Rectangle firePlace1;
+        houseEnter = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
+
+        villageObjects.add(houseEnter);
+
+        return villageObjects;
+    }
+
+    public ArrayList<Rectangle> getForestSceneObjects(Rectangle background) {
+        Rectangle firePlace1;
+        houseEnter = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
+        villageObjects.add(houseEnter);
         return villageObjects;
     }
 
@@ -83,32 +102,41 @@ public class Scene {
         this.inForest = inForest;
     }
 
-    public void sceneChangeExit(Player link, ArrayList<Rectangle> objects){
+    public void sceneChangeExit(Player link){
         int linkRX = link.getX() + link.getSpeed() + 4;
         int linkRW = link.getX() + link.getW() - link.getSpeed() - 4;
         int linkRY = link.getY() - link.getSpeed() - 4;
         int linkRH = link.getY() + link.getH() + link.getSpeed() + 4;
         if(inHouse && houseExit.getX() < linkRW && houseExit.getX() + houseExit.getW() > linkRX && houseExit.getY() < linkRH && houseExit.getY() + houseExit.getH() > linkRY && link.isDown()){
             System.out.println("Exit");
-            timeSceneChange += 0.1;
-            System.out.println(timeSceneChange);
             inHouse = false;
             inVillage = true;
             link.setInside(false);
+            link.setX(600);
+            link.setY(250);
+        }
+        else if(inVillage && villageExit.getX() < linkRW && villageExit.getX() + villageExit.getW() > linkRX && villageExit.getY() < linkRH && villageExit.getY() + villageExit.getH() > linkRY && link.isUp()){
+            System.out.println("Exit");
+            inVillage = false;
+            inCastle = true;
+            link.setInside(false);
+            link.setX(525);
+            link.setY(350);
         }
     }
 
-    public void sceneChangeEnter(Player link, ArrayList<Rectangle> objects){
+    public void sceneChangeEnter(Player link){
         int linkRX = link.getX() + link.getSpeed() + 4;
         int linkRW = link.getX() + link.getW() - link.getSpeed() - 4;
         int linkRY = link.getY() - link.getSpeed() - 4;
         int linkRH = link.getY() + link.getH() + link.getSpeed() + 4;
-        if(inHouse && houseExit.getX() < linkRW && houseExit.getX() + houseExit.getW() > linkRX && houseExit.getY() < linkRH && houseExit.getY() + houseExit.getH() > linkRY && link.isDown()){
-            System.out.println("Exit");
-            inHouse = false;
-            inVillage = true;
-            link.setInside(false);
-
+        if(inVillage && houseEnter.getX() < linkRW && houseEnter.getX() + houseEnter.getW() > linkRX && houseEnter.getY() < linkRH && houseEnter.getY() + houseEnter.getH() > linkRY && link.isUp()){
+            System.out.println("Enter");
+            inHouse = true;
+            inVillage = false;
+            link.setInside(true);
+            link.setX(475);
+            link.setY(300);
         }
     }
 
@@ -120,14 +148,18 @@ public class Scene {
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
         else if(isInVillage() && scene == 1) {
-            if(timeSceneChange % 10 == 0){
-                g.setColor(Color.BLACK);
-                g.drawRect(0,0, r.getW(), r.getH());
-            }
+            g.setColor(Color.BLACK);
             back = new ImageIcon(Rectangle.class.getResource("Assests\\village.png"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
-
+        else if(isInCastle() && scene == 2) {
+            back = new ImageIcon(Rectangle.class.getResource("Assests\\castle.jpg"));
+            g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
+        }
+        else if(isInForest() && scene == 3) {
+            back = new ImageIcon(Rectangle.class.getResource("Assests\\village.png"));
+            g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
+        }
 
     }
 
