@@ -43,7 +43,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         castle = new Rectangle(-117, -340, 1300, 825, false);
         forest = new Rectangle(0, 0, 1010, 510, false);
         scene = new Scene();
-        zelda = new Character(500 + forest.getX(), 250 + forest.getY(), 100, 5, false);
         gameSceneObjects = scene.getHouseSceneObjects(house);
         count = 0;
 
@@ -81,9 +80,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         scene.paintScene(g, village, 1);
         scene.paintScene(g, castle, 2);
         scene.paintScene(g, forest, 3);
-        if(scene.isInVillage()) {
-            zelda.paintZelda(g, 1);
-        }
+
 
         //g.fillRect(gameSceneObjects.get(2).getX(), gameSceneObjects.get(2).getY(), gameSceneObjects.get(2).getW(), gameSceneObjects.get(2).getH());
         //All characters must be drawn last
@@ -107,7 +104,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         else if(scene.isInVillage()){
             if(count % 2 == 1){
                 gameSceneObjects = scene.getVillageSceneObjects(village);
-                gameSceneObjects.add(zelda);
                 song.stop();
                 song = Applet.newAudioClip(this.getClass().getResource("Assets/Sounds/Village.wav"));
                 song.loop();

@@ -9,6 +9,7 @@ public class Scene {
     private Rectangle houseExit , villageExitCastle, villageExitForest;
     private Rectangle houseEnter, villageEnterCastle, villageEnterForest;
     private double timeSceneChange;
+    private Character zelda;
 
     public Scene(){
         houseObjects = new ArrayList<Rectangle>();
@@ -30,6 +31,7 @@ public class Scene {
         houseEnter = new Rectangle(0,0,0,0, false);
         villageEnterCastle = new Rectangle(0,0,0,0, false);
         villageEnterForest = new Rectangle(0,0,0,0, false);
+        zelda = new Character(0,0,0,0, false);
     }
 
     public ArrayList<Rectangle> getHouseSceneObjects(Rectangle background){
@@ -58,9 +60,11 @@ public class Scene {
         houseEnter = new Rectangle(scale(425, 1.5) + background.getX(), scale(385, 1.45) + background.getY(), scale(430, 1.5) - scale(425, 1.5), scale(390, 1.45) - scale(385, 1.45), false);
         villageExitCastle = new Rectangle(scale(255, 1.5) + background.getX(), scale(70, 1.45) + background.getY(), scale(315, 1.5) - scale(255, 1.5), scale(75, 1.45) - scale(70, 1.45), false);
         villageExitForest = new Rectangle(scale(55, 1.5) + background.getX(), scale(605, 1.45) + background.getY(), scale(60, 1.5) - scale(55, 1.5), scale(635, 1.45) - scale(605, 1.45), false);
+        zelda = new Character(350 + background.getX(), 650 + background.getY(), 100, 5, false);
         villageObjects.add(houseEnter);
         villageObjects.add(villageExitCastle);
         villageObjects.add(villageExitForest);
+        villageObjects.add(zelda);
         return villageObjects;
     }
 
@@ -196,6 +200,9 @@ public class Scene {
         else if(isInForest() && scene == 3) {
             back = new ImageIcon(Rectangle.class.getResource("Assets/Scenes/forest.png"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
+        }
+        if(isInVillage()) {
+            Character.paintZelda(g, 1, zelda);
         }
 
     }
