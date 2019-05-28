@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -9,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Player extends Character{
 
     private boolean isInside;
-    private boolean left, right, up, down;
+    private boolean left, right, up, down, shift, space, enter;
     private int lastKey;
     private double timePressed;
 
@@ -20,6 +21,7 @@ public class Player extends Character{
         right = false;
         up = false;
         down = false;
+        shift = false;
         lastKey = 1;
         timePressed = 0;
     }
@@ -78,6 +80,9 @@ public class Player extends Character{
         if (key == 68) {
             right = true;
         }
+        if (key == 16){
+            shift = true;
+        }
     }
 
     public void keyReleasedPlayer(int key){
@@ -97,6 +102,9 @@ public class Player extends Character{
         if (key == 68) {
             right = false;
             lastKey = 4;
+        }
+        if(key == 16){
+            shift = false;
         }
     }
 
@@ -162,40 +170,40 @@ public class Player extends Character{
 
     public void paintPlayer(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
-        ImageIcon link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile000.png"));
+        ImageIcon link = new ImageIcon(Player.class.getResource("Assets/Link/tile000.png"));
 
         if(up) {
             for(int i = 48; i <= timePressed + 48; i++) {
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
         }
         else if(down) {
             for(int i = 24; i <= timePressed + 24; i++) {
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
         }
         else if(left) {
             for(int i = 36; i <= timePressed + 36; i++) {
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
         }
         else if(right) {
             for(int i = 12; i <= timePressed + 12; i++) {
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile0" + i + ".png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
         }
         else{
             if(lastKey == 1){
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile000.png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile000.png"));
             }
             else if(lastKey == 2){
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile024.png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile024.png"));
             }
             else if(lastKey == 3){
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile037.png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile037.png"));
             }
             else if(lastKey == 4){
-                link = new ImageIcon(Player.class.getResource("Assests\\Link\\tile013.png"));
+                link = new ImageIcon(Player.class.getResource("Assets/Link/tile013.png"));
             }
         }
         g2d.drawImage(link.getImage(), getX(), getY(), getW(), getH(), null);
@@ -224,6 +232,15 @@ public class Player extends Character{
         }
         else{
             isInside = false;
+        }
+    }
+
+    public void run(){
+        if(shift){
+            setSpeed(5);
+        }
+        else{
+            setSpeed(3);
         }
     }
 

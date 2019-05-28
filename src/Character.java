@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 
 public class Character extends Rectangle {
 
@@ -44,6 +46,13 @@ public class Character extends Rectangle {
 
     public void setBlocking(boolean blocking) {
         isBlocking = blocking;
+    }
+
+    public void paintZelda(Graphics g, int x){
+        Graphics2D g2d = (Graphics2D)g;
+        ImageIcon character;
+        character = new ImageIcon(Rectangle.class.getResource("Assets/Zelda/00" + x + ".png"));
+        g2d.drawImage(character.getImage(), getX(), getY(), getW() - 10, getH() - 14, null);
     }
 
 }

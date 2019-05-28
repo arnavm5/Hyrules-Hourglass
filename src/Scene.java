@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Scene {
 
     private ArrayList<Rectangle> houseObjects, villageObjects, castleObjects, forestObjects;;
-    private boolean inHouse, inVillage, inCastle, inForest;
+    private boolean inHouse, inVillage, inCastle, inForest, start, end, win, lose;
     private Rectangle houseExit , villageExitCastle, villageExitForest;
     private Rectangle houseEnter, villageEnterCastle, villageEnterForest;
     private double timeSceneChange;
@@ -19,6 +19,10 @@ public class Scene {
         inVillage = false;
         inCastle = false;
         inForest = false;
+        start = true;
+        end = false;
+        win = false;
+        lose = false;
         timeSceneChange = 0;
         houseExit  = new Rectangle(0,0,0,0, false);
         villageExitCastle = new Rectangle(0,0,0,0, false);
@@ -69,7 +73,7 @@ public class Scene {
 
     public ArrayList<Rectangle> getForestSceneObjects(Rectangle background) {
         Rectangle firePlace1;
-        villageEnterForest = new Rectangle(scale(425, 1.95) + background.getX(), scale(390, 1.4) + background.getY(), scale(430, 1.95) - scale(425, 1.95), scale(395, 1.4) - scale(390, 1.4), false);
+        villageEnterForest = new Rectangle(scale(125, 1.05) + background.getX(), scale(15, 1.6) + background.getY(), scale(165, 1.05) - scale(125, 1.05), scale(20, 1.6) - scale(15, 1.6), false);
         forestObjects.add(villageExitForest);
         return forestObjects;
     }
@@ -177,20 +181,20 @@ public class Scene {
         Graphics2D g2d = (Graphics2D)g;
         ImageIcon back;
         if(isInHouse() && scene == 0) {
-            back = new ImageIcon(Rectangle.class.getResource("Assests\\house.png"));
+            back = new ImageIcon(Rectangle.class.getResource("Assets/Scenes/house.png"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
         else if(isInVillage() && scene == 1) {
             g.setColor(Color.BLACK);
-            back = new ImageIcon(Rectangle.class.getResource("Assests\\village.png"));
+            back = new ImageIcon(Rectangle.class.getResource("Assets/Scenes/village.png"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
         else if(isInCastle() && scene == 2) {
-            back = new ImageIcon(Rectangle.class.getResource("Assests\\castle.jpg"));
+            back = new ImageIcon(Rectangle.class.getResource("Assets/Scenes/castle.jpg"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
         else if(isInForest() && scene == 3) {
-            back = new ImageIcon(Rectangle.class.getResource("Assests\\forest.png"));
+            back = new ImageIcon(Rectangle.class.getResource("Assets/Scenes/forest.png"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
 

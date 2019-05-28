@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="MittalProject8:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MittalProject8_jar</output-path>
+    <root id="root">
+      <element id="archive" name="MittalProject8.jar">
+        <element id="module-output" name="MittalProject8" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -8,10 +8,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import java.applet.*;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 
 
 public class Game extends JComponent implements KeyListener, MouseListener, MouseMotionListener{
@@ -19,10 +17,12 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     private int WIDTH;
     private int HEIGHT;
     private Player link;
+    private Character zelda;
     private ArrayList<Rectangle> gameSceneObjects;
     private Rectangle house, village, castle, forest;
     private Scene scene;
     private int count;
+    private AudioClip song;
 
     //Default Constructor
     public Game()
@@ -30,17 +30,20 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         //initializing instance variables
         WIDTH = 1000;
         HEIGHT = 500;
+        song = Applet.newAudioClip(this.getClass().getResource("/Assets/Sounds/House.wav"));
 
         int houseW = 450;
         int houseH = 350;
         link = new Player(WIDTH/2 - 25,HEIGHT/2 - 30, 100, 3, true);
 
 
+
         house = new Rectangle(WIDTH/2 - houseW/2, HEIGHT/2 - houseH/2, houseW, houseH, false);
         village = new Rectangle(-1, -342, 1000, 1000, false);
         castle = new Rectangle(-117, -340, 1300, 825, false);
-        forest = new Rectangle(0, 0, 1000, 520, false);
+        forest = new Rectangle(0, 0, 1010, 510, false);
         scene = new Scene();
+        zelda = new Character(500 + forest.getX(), 250 + forest.getY(), 100, 5, false);
         gameSceneObjects = scene.getHouseSceneObjects(house);
         count = 0;
 
@@ -78,65 +81,87 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         scene.paintScene(g, village, 1);
         scene.paintScene(g, castle, 2);
         scene.paintScene(g, forest, 3);
+        if(scene.isInVillage()) {
+            zelda.paintZelda(g, 1);
+        }
 
         //g.fillRect(gameSceneObjects.get(2).getX(), gameSceneObjects.get(2).getY(), gameSceneObjects.get(2).getW(), gameSceneObjects.get(2).getH());
         //All characters must be drawn last
         this.link.paintPlayer(g);
 
     }
-
-    public void loop()
-    {
-        link.timePressedMove();
+    public void sceneFixtures(){
         if(scene.isInHouse()) {
             if(count % 2 == 0){
                 gameSceneObjects = scene.getHouseSceneObjects(house);
+                song.stop();
+                song = Applet.newAudioClip(this.getClass().getResource("Assets/Sounds/House.wav"));
+                song.loop();
                 count ++;
             }
             link.sceneCollision(house, 58, 62);
             house.screenCollision(link, 100);
             link.moveScene(gameSceneObjects, house);
-            System.out.println("In House:" + scene.isInHouse());
+            //System.out.println("In House:" + scene.isInHouse());
         }
         else if(scene.isInVillage()){
             if(count % 2 == 1){
                 gameSceneObjects = scene.getVillageSceneObjects(village);
+                gameSceneObjects.add(zelda);
+                song.stop();
+                song = Applet.newAudioClip(this.getClass().getResource("Assets/Sounds/Village.wav"));
+                song.loop();
                 count ++;
             }
-            link.sceneCollision(village, 56, 0);
+            link.sceneCollision(village, 0, 70);
             village.screenCollision(link, 200);
             link.moveScene(gameSceneObjects, village);
             link.movementSwitch(village);
-            System.out.println("In Village:" + scene.isInVillage());
+            //System.out.println("In Village:" + scene.isInVillage());
         }
         else if(scene.isInCastle()){
             if(count % 2 == 0){
                 gameSceneObjects = scene.getCastleSceneObjects(castle);
+                song.stop();
+                song = Applet.newAudioClip(this.getClass().getResource("Assets/Sounds/Castle.wav"));
+                song.loop();
                 count++;
             }
             link.sceneCollision(castle, 56, 0);
             castle.screenCollision(link, 200);
             link.moveScene(gameSceneObjects, castle);
             link.movementSwitch(castle);
-            System.out.println("In Castle:" + scene.isInCastle());
+            //System.out.println("In Castle:" + scene.isInCastle());
         }
         else if(scene.isInForest()){
             if(count % 2 == 0){
                 gameSceneObjects = scene.getForestSceneObjects(forest);
+                song.stop();
+                song = Applet.newAudioClip(this.getClass().getResource("Assets/Sounds/Forest.wav"));
+                song.loop();
                 count++;
             }
             link.sceneCollision(forest, 56, 0);
             forest.screenCollision(link, 200);
             link.moveScene(gameSceneObjects, forest);
-            //link.movementSwitch(forest);
-            System.out.println("In Forest:" + scene.isInForest());
+
+            //System.out.println("In Forest:" + scene.isInForest());
         }
+
         for(Rectangle r: gameSceneObjects) {
             link.recCollision(r, 5, 16);
         }
         link.movePlayer();
+        link.run();
         scene.sceneChangeExit(link);
         scene.sceneChangeEnter(link);
+    }
+
+
+    public void loop()
+    {
+        link.timePressedMove();
+        sceneFixtures();
         repaint();
     }
 
