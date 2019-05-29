@@ -66,7 +66,9 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     public void keyPressed(KeyEvent e)
     {
         int key = e.getKeyCode();
+        //System.out.println(key);
         link.keyPressedPlayer(key);
+        scene. sceneKeyPressed(key);
 
     }
 
@@ -80,6 +82,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         scene.paintScene(g, village, 1);
         scene.paintScene(g, castle, 2);
         scene.paintScene(g, forest, 3);
+        scene.paintText(g);
 
 
         //g.fillRect(gameSceneObjects.get(2).getX(), gameSceneObjects.get(2).getY(), gameSceneObjects.get(2).getW(), gameSceneObjects.get(2).getH());
@@ -158,6 +161,8 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     {
         link.timePressedMove();
         sceneFixtures();
+        scene.storyHandler(link);
+        scene.autoCharacters(village);
         repaint();
     }
 
@@ -171,6 +176,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     {
         int key = e.getKeyCode();
         link.keyReleasedPlayer(key);
+        scene.sceneKeyReleased(key);
     }
 
     public void mousePressed(MouseEvent e)

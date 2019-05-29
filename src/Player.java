@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Player extends Character{
 
     private boolean isInside;
-    private boolean left, right, up, down, shift, space, enter;
+    private boolean left, right, up, down, shift;
     private int lastKey;
     private double timePressed;
 
