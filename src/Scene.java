@@ -345,14 +345,8 @@ public class Scene {
         boolean notWalk3 = countSpaces == 4 && villainTalks && inCastle;
         boolean notWalk4 = countSpaces == 5 && question1 && inCastle;
         boolean notWalk5 = countSpaces == 6 && villainDec && inCastle;
-        if(isZeldaMoving){
-            link.setSpeed(0);
-            link.setUp(false);
-            link.setDown(false);
-            link.setLeft(false);
-            link.setRight(false);
-        }
-        else if(countSpaces <= 1 || notWalk1 || notWalk2 || notWalk3 || notWalk4 || notWalk5){
+       
+        if(countSpaces <= 1 || notWalk1 || notWalk2 || notWalk3 || notWalk4 || notWalk5){
             link.setSpeed(0);
             link.setUp(false);
             link.setDown(false);
@@ -361,13 +355,22 @@ public class Scene {
             spaceIncrement = true;
         }
         else{
-            isZeldaMoving = false;
+            if(inCastle){
+                isZeldaMoving =false;
+            }
             spaceIncrement = false;
             if(link.isShift())
                 link.setSpeed(4);
             else{
                 link.setSpeed(3);
             }
+        }
+        if(isZeldaMoving){
+                link.setSpeed(0);
+                link.setUp(false);
+                link.setDown(false);
+                link.setLeft(false);
+                link.setRight(false);
         }
 
     }
@@ -383,10 +386,11 @@ public class Scene {
                 }
             }
         }
-       // if(villainTalks && !question1){
-        //    if(scene.getY() < -100){
-       //         link.setUp(true);
-         //   }
-        //}
+        System.out.println(!villainTalks && !question1 && countSpaces== 7);
+        if(countSpaces == 7){
+            if(scene.getY() < -100){
+                link.setUp(true);
+            }
+        }
     }
 }
