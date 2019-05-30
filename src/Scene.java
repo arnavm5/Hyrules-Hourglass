@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Scene {
 
     private ArrayList<Rectangle> houseObjects, villageObjects, castleObjects, forestObjects;;
-    private boolean inHouse, inVillage, inCastle, inForest, start, story1, enterCastle, villainTalks, question1 ,villainDec, end, win, lose, controls, space, enter;
+    private boolean inHouse, inVillage, inCastle,inForest, start, story1, enterCastle, villainTalks, question1 ,villainDec, end, win, lose, controls, space,spaceIncrement, enter;
     private Rectangle houseExit , villageExitCastle, villageExitForest;
     private Rectangle houseEnter, villageEnterCastle, villageEnterForest;
     private Rectangle textBox;
@@ -13,6 +13,7 @@ public class Scene {
     private double timeSceneChange;
     private Character zelda;
     private int countSpaces;
+    private boolean isZeldaMoving;
 
     public Scene(){
         houseObjects = new ArrayList<Rectangle>();
@@ -46,6 +47,8 @@ public class Scene {
         textBox = new Rectangle(0,0,0,0, false);
         text = new Font("Ariel", Font.PLAIN, 20);
         zelda = new Character(0,0,0,0, false);
+        spaceIncrement=false;
+        isZeldaMoving = false;
 
     }
 
@@ -152,7 +155,7 @@ public class Scene {
             inVillage = true;
             link.setInside(false);
             link.setX(615);
-            link.setY(205);
+            link.setY(230);
         }
         else if(inVillage && villageExitCastle.getX() < linkRW && villageExitCastle.getX() + villageExitCastle.getW() > linkRX && villageExitCastle.getY() < linkRH && villageExitCastle.getY() + villageExitCastle.getH() > linkRY && link.isUp()){
             System.out.println("Exit");
@@ -282,7 +285,7 @@ public class Scene {
     public void sceneKeyPressed(int key){
         if(key == 32){
             space = true;
-
+            
         }
         if (key == 10) {
             enter = true;
@@ -292,7 +295,8 @@ public class Scene {
     public void sceneKeyReleased(int key){
         if(key == 32){
             space = false;
-            countSpaces += 1;
+            if(spaceIncrement)
+                countSpaces++;
         }
         if (key == 10) {
             enter = false;
@@ -312,6 +316,10 @@ public class Scene {
         }
         else if(countSpaces == 3){
             story1 = false;
+            isZeldaMoving = true;
+            if(zelda.getY() + zelda.getH() < 0){
+                isZeldaMoving = false;
+            }
         }
         else if(countSpaces == 4){
             enterCastle = false;
@@ -337,17 +345,24 @@ public class Scene {
         boolean notWalk3 = countSpaces == 4 && villainTalks && inCastle;
         boolean notWalk4 = countSpaces == 5 && question1 && inCastle;
         boolean notWalk5 = countSpaces == 6 && villainDec && inCastle;
-        if(countSpaces <= 1 || notWalk1 || notWalk2 || notWalk3 || notWalk4 || notWalk5){
+        if(isZeldaMoving){
             link.setSpeed(0);
             link.setUp(false);
             link.setDown(false);
             link.setLeft(false);
             link.setRight(false);
         }
+        else if(countSpaces <= 1 || notWalk1 || notWalk2 || notWalk3 || notWalk4 || notWalk5){
+            link.setSpeed(0);
+            link.setUp(false);
+            link.setDown(false);
+            link.setLeft(false);
+            link.setRight(false);
+            spaceIncrement = true;
+        }
         else{
-            if(space){
-                countSpaces -= 1;
-            }
+            isZeldaMoving = false;
+            spaceIncrement = false;
             if(link.isShift())
                 link.setSpeed(4);
             else{
@@ -358,7 +373,7 @@ public class Scene {
     }
 
     public void autoCharacters(Rectangle scene, Player link, int x){
-        boolean zeldaMove1 = countSpaces >= 2 && countSpaces <= 3 && inVillage;
+        boolean zeldaMove1 = countSpaces == 2 || countSpaces == 3 && inVillage;
         if(zeldaMove1 && x == 1){
             if(zelda.getY() >= scene.getY()){
                 zelda.setY(zelda.getY() - zelda.getSpeed());
