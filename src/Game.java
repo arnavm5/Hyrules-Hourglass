@@ -100,7 +100,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
                 count ++;
             }
             link.sceneCollision(house, 58, 62);
-            house.screenCollision(link, 100);
+            house.screenCollision(link, 100, 100);
             link.moveScene(gameSceneObjects, house);
             //System.out.println("In House:" + scene.isInHouse());
         }
@@ -113,7 +113,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
                 count ++;
             }
             link.sceneCollision(village, 0, 70);
-            village.screenCollision(link, 200);
+            village.screenCollision(link, WIDTH/2, HEIGHT/2);
             link.moveScene(gameSceneObjects, village);
             link.movementSwitch(village);
             //System.out.println("In Village:" + scene.isInVillage());
@@ -127,7 +127,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
                 count++;
             }
             link.sceneCollision(castle, 56, 0);
-            castle.screenCollision(link, 200);
+            castle.screenCollision(link, WIDTH/2, HEIGHT/2 - 20);
             link.moveScene(gameSceneObjects, castle);
             link.movementSwitch(castle);
             //System.out.println("In Castle:" + scene.isInCastle());
@@ -141,7 +141,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
                 count++;
             }
             link.sceneCollision(forest, 56, 0);
-            forest.screenCollision(link, 200);
+            forest.screenCollision(link, 200, 100);
             link.moveScene(gameSceneObjects, forest);
 
             //System.out.println("In Forest:" + scene.isInForest());
@@ -151,7 +151,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
             link.recCollision(r, 5, 16);
         }
         link.movePlayer();
-        link.run();
         scene.sceneChangeExit(link);
         scene.sceneChangeEnter(link);
     }
@@ -162,7 +161,8 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         link.timePressedMove();
         sceneFixtures();
         scene.storyHandler(link);
-        scene.autoCharacters(village);
+        scene.autoCharacters(village, link, 1);
+        scene.autoCharacters(castle, link, 2);
         repaint();
     }
 

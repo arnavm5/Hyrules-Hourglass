@@ -46,6 +46,10 @@ public class Player extends Character{
         return down;
     }
 
+    public boolean isShift() {
+        return shift;
+    }
+
     public void setInside(boolean inside) {
         isInside = inside;
     }
@@ -69,16 +73,27 @@ public class Player extends Character{
     public void keyPressedPlayer(int key){
         if (key == 87) {
             up = true;
+            down = false;
+            left = false;
+            right = false;
         }
-        if (key == 83) {
+        else if (key == 83) {
             down = true;
-
+            up = false;
+            left = false;
+            right = false;
         }
-        if (key == 65) {
+        else if (key == 65) {
             left = true;
+            up = false;
+            down = false;
+            right = false;
         }
-        if (key == 68) {
+        else if (key == 68) {
             right = true;
+            left = false;
+            up = false;
+            down = false;
         }
         if (key == 16){
             shift = true;
@@ -232,15 +247,6 @@ public class Player extends Character{
         }
         else{
             isInside = false;
-        }
-    }
-
-    public void run(){
-        if(shift){
-            setSpeed(5);
-        }
-        else{
-            setSpeed(3);
         }
     }
 

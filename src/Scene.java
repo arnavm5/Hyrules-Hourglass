@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Scene {
 
     private ArrayList<Rectangle> houseObjects, villageObjects, castleObjects, forestObjects;;
-    private boolean inHouse, inVillage, inCastle, inForest, start, story1, end, win, lose, controls, space, enter;
+    private boolean inHouse, inVillage, inCastle, inForest, start, story1, enterCastle, villainTalks, question1 ,villainDec, end, win, lose, controls, space, enter;
     private Rectangle houseExit , villageExitCastle, villageExitForest;
     private Rectangle houseEnter, villageEnterCastle, villageEnterForest;
     private Rectangle textBox;
@@ -25,6 +25,10 @@ public class Scene {
         inForest = false;
         start = true;
         story1 = true;
+        enterCastle = true;
+        question1 = false;
+        villainTalks = false;
+        villainDec = false;
         end = false;
         win = false;
         lose = false;
@@ -86,7 +90,11 @@ public class Scene {
     public ArrayList<Rectangle> getCastleSceneObjects(Rectangle background) {
         Rectangle firePlace1;
         villageEnterCastle = new Rectangle(scale(485, 1.3) + background.getX(), scale(505, 1.55) + background.getY(), scale(525, 1.3) - scale(485, 1.3), scale(510, 1.55) - scale(505, 1.55), false);
+        if(!story1 && enterCastle) {
+            zelda = new Character(375 + background.getX(), 650 + background.getY(), 100, 2, false);
+        }
         castleObjects.add(villageEnterCastle);
+        castleObjects.add(zelda);
         return castleObjects;
     }
 
@@ -182,8 +190,8 @@ public class Scene {
             inVillage = true;
             inCastle = false;
             link.setInside(false);
-            link.setX(575);
-            link.setY(125);
+            link.setX(400);
+            link.setY(95);
         }
         else if(inForest && villageEnterForest.getX() < linkRW && villageEnterForest.getX() + villageEnterForest.getW() > linkRX && villageEnterForest.getY() < linkRH && villageEnterForest.getY() + villageEnterForest.getH() > linkRY && link.isUp()){
             System.out.println("Enter");
@@ -216,7 +224,7 @@ public class Scene {
             back = new ImageIcon(Scene.class.getResource("Assets/Scenes/forest.png"));
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
-        if(isInVillage() && zelda.getY() >= r.getY()) {
+        if(isInVillage() && zelda.getY() >= r.getY() && enterCastle) {
             Character.paintZelda(g, 2, zelda);
         }
         else{
@@ -227,34 +235,55 @@ public class Scene {
     public void paintText(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
         ImageIcon box = new ImageIcon(Scene.class.getResource("Assets/Extras/TextBox.jpg"));
+        g.setFont(text);
+        boolean next = true;
         if(start && controls && inHouse){
             g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
-            g.setFont(text);
             g.setColor(Color.WHITE);
             g.drawString("Controls: W-A-S-D to move, Shift to run.", textBox.getX() + 15, textBox.getY() + 30);
         }
         else if(start && inHouse){
             g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
-            g.setFont(text);
             g.setColor(Color.WHITE);
-            g.drawString("Zelda: Link, we will be late to the festival.", textBox.getX() + 15, textBox.getY() + 30);
+            g.drawString("???: Link, we will be late to the festival.", textBox.getX() + 15, textBox.getY() + 30);
         }
         else if(story1 && inVillage){
             g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
-            g.setFont(text);
             g.setColor(Color.WHITE);
             g.drawString("Zelda: I will see you at the Hourglass Festival in ", textBox.getX() + 15, textBox.getY() + 30);
             g.drawString(".", textBox.getX() + 133, textBox.getY() + 50);
             g.setColor(Color.CYAN);
             g.drawString("Hyrule Castle", textBox.getX() + 15, textBox.getY() + 50);
-
+        }
+        else if(inCastle && enterCastle){
+            g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
+            g.setColor(Color.WHITE);
+            g.drawString("Link: Hey, where did everyone go?", textBox.getX() + 15, textBox.getY() + 30);
+        }
+        else if(inCastle && villainTalks){
+            g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
+            g.setColor(Color.MAGENTA);
+            g.drawString("???: MUWHAHAHAHA, I have Zelda and the", textBox.getX() + 15, textBox.getY() + 30);
+            g.drawString("Hourglass. No one can stop me from taking ", textBox.getX() + 15, textBox.getY() + 50);
+            g.drawString("over Hyrule now.", textBox.getX() + 15, textBox.getY() + 73);
+        }
+        else if(inCastle && question1){
+            g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
+            g.setColor(Color.WHITE);
+            g.drawString("Link: WHO ARE YOU AND WHERE IS ZELDA??", textBox.getX() + 15, textBox.getY() + 30);
+        }
+        else if(inCastle && villainDec){
+            g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
+            g.setColor(Color.MAGENTA);
+            g.drawString("???: I AM VAATI, AND I WILL TAKE OVER ", textBox.getX() + 15, textBox.getY() + 30);
+            g.drawString("HYRULE. MWAHAHAHA", textBox.getX() + 15, textBox.getY() + 50);
         }
     }
 
     public void sceneKeyPressed(int key){
         if(key == 32){
             space = true;
-            countSpaces += 1;
+
         }
         if (key == 10) {
             enter = true;
@@ -264,6 +293,7 @@ public class Scene {
     public void sceneKeyReleased(int key){
         if(key == 32){
             space = false;
+            countSpaces += 1;
         }
         if (key == 10) {
             enter = false;
@@ -284,9 +314,31 @@ public class Scene {
         else if(countSpaces == 3){
             story1 = false;
         }
+        else if(countSpaces == 4){
+            enterCastle = false;
+            if(link.getY() < 200){
+                villainTalks = true;
+            }
+        }
+        else if(countSpaces == 5){
+            villainTalks = false;
+            question1 = true;
+        }
+        else if(countSpaces == 6){
+            question1 = false;
+            villainDec = true;
+        }
+        else if(countSpaces == 7){
+            villainDec = false;
+        }
+
         System.out.println(countSpaces);
         boolean notWalk1 = countSpaces == 2 && story1 && inVillage;
-        if(countSpaces <= 1 || notWalk1){
+        boolean notWalk2 = countSpaces == 3 && enterCastle && inCastle;
+        boolean notWalk3 = countSpaces == 4 && villainTalks && inCastle;
+        boolean notWalk4 = countSpaces == 5 && question1 && inCastle;
+        boolean notWalk5 = countSpaces == 6 && villainDec && inCastle;
+        if(countSpaces <= 1 || notWalk1 || notWalk2 || notWalk3 || notWalk4 || notWalk5){
             link.setSpeed(0);
             link.setUp(false);
             link.setDown(false);
@@ -294,13 +346,21 @@ public class Scene {
             link.setRight(false);
         }
         else{
-            link.setSpeed(3);
+            if(space){
+                countSpaces -= 1;
+            }
+            if(link.isShift())
+                link.setSpeed(4);
+            else{
+                link.setSpeed(3);
+            }
         }
+
     }
 
-    public void autoCharacters(Rectangle scene){
-        boolean zeldaMove1 = countSpaces >= 2 && inVillage;
-        if(zeldaMove1){
+    public void autoCharacters(Rectangle scene, Player link, int x){
+        boolean zeldaMove1 = countSpaces >= 2 && countSpaces <= 3 && inVillage;
+        if(zeldaMove1 && x == 1){
             if(zelda.getY() >= scene.getY()){
                 zelda.setY(zelda.getY() - zelda.getSpeed());
                 if(zelda.getY() <= scene.getY()){
@@ -309,5 +369,10 @@ public class Scene {
                 }
             }
         }
+       // if(villainTalks && !question1){
+        //    if(scene.getY() < -100){
+       //         link.setUp(true);
+         //   }
+        //}
     }
 }

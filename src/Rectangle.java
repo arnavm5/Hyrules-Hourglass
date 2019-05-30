@@ -53,16 +53,16 @@ public class Rectangle {
         isOnEdge = onEdge;
     }
 
-    public void screenCollision(Player p, int dist){
+    public void screenCollision(Player p, int distX, int distY){
         if(p.isLeft() || p.isRight()){
-            if(Math.abs(p.getX() - getX()) < dist || Math.abs((p.getX() + p.getW()) - (getX() + w)) < dist)
+            if(Math.abs(p.getX() - getX()) < distX || Math.abs((p.getX() + p.getW()) - (getX() + w)) < distX)
                 setOnEdge(true);
             else{
                 setOnEdge(false);
             }
         }
-        if(p.isUp() || p.isDown()){
-            if(Math.abs(p.getY()-getY()) < dist || Math.abs((p.getY() + p.getH())-(getY() + h)) < dist){
+        else if(p.isUp() || p.isDown()){
+            if(Math.abs(p.getY()-getY()) < distY || Math.abs((p.getY() + p.getH())-(getY() + h)) < distY){
                 setOnEdge(true);
             }  
             else
