@@ -160,7 +160,7 @@ public class Scene {
             inCastle = true;
             link.setInside(false);
             link.setX(515);
-            link.setY(350);
+            link.setY(300);
         }
         else if(inVillage && villageExitForest.getX() < linkRW && villageExitForest.getX() + villageExitForest.getW() > linkRX && villageExitForest.getY() < linkRH && villageExitForest.getY() + villageExitForest.getH() > linkRY && link.isLeft()){
             System.out.println("Exit");
@@ -236,7 +236,6 @@ public class Scene {
         Graphics2D g2d = (Graphics2D)g;
         ImageIcon box = new ImageIcon(Scene.class.getResource("Assets/Extras/TextBox.jpg"));
         g.setFont(text);
-        boolean next = true;
         if(start && controls && inHouse){
             g2d.drawImage(box.getImage(), textBox.getX(), textBox.getY(), textBox.getW(), textBox.getH(), null);
             g.setColor(Color.WHITE);
