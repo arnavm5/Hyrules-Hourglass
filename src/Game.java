@@ -17,7 +17,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     private int WIDTH;
     private int HEIGHT;
     private Player link;
-    private Character zelda;
     private ArrayList<Rectangle> gameSceneObjects;
     private Rectangle house, village, castle, forest;
     private Scene scene;
@@ -160,7 +159,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     {
         link.timePressedMove();
         sceneFixtures();
-        scene.storyHandler(link);
+        scene.storyHandler(link, castle);
         scene.autoCharacters(village, link, 1);
         scene.autoCharacters(castle, link, 2);
         repaint();

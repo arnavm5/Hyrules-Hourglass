@@ -11,7 +11,7 @@ public class Scene {
     private Rectangle textBox;
     private Font text;
     private double timeSceneChange;
-    private Character zelda;
+    private Character zelda, vaati;
     private int countSpaces;
     private boolean isZeldaMoving;
 
@@ -47,6 +47,7 @@ public class Scene {
         textBox = new Rectangle(0,0,0,0, false);
         text = new Font("Ariel", Font.PLAIN, 20);
         zelda = new Character(0,0,0,0, false);
+        vaati = new Character(400,0,0,0, false);
         spaceIncrement=false;
         isZeldaMoving = false;
 
@@ -98,6 +99,7 @@ public class Scene {
         }
         castleObjects.add(villageEnterCastle);
         castleObjects.add(zelda);
+        castleObjects.add(vaati);
         return castleObjects;
     }
 
@@ -228,10 +230,10 @@ public class Scene {
             g2d.drawImage(back.getImage(), r.getX(), r.getY(), r.getW(), r.getH(), null);
         }
         if(isInVillage() && zelda.getY() >= r.getY() && enterCastle) {
-            Character.paintZelda(g, 2, zelda);
+            zelda.paintZelda(g, 2);
         }
-        else{
-
+        if(isInCastle() && vaati.getY() >= 100){
+            vaati.paintVaati(g);
         }
     }
 
@@ -303,7 +305,7 @@ public class Scene {
         }
     }
 
-    public void storyHandler(Player link){
+    public void storyHandler(Player link, Rectangle back1){
         if(countSpaces == 0){
             start = true;
             controls = true;
@@ -329,7 +331,9 @@ public class Scene {
         }
         else if(countSpaces == 5){
             villainTalks = false;
-            question1 = true;
+            if(back1.getY() > -30) {
+                question1 = true;
+            }
         }
         else if(countSpaces == 6){
             question1 = false;
@@ -338,7 +342,6 @@ public class Scene {
         else if(countSpaces == 7){
             villainDec = false;
         }
-
         System.out.println(countSpaces);
         boolean notWalk1 = countSpaces == 2 && story1 && inVillage;
         boolean notWalk2 = countSpaces == 3 && enterCastle && inCastle;
@@ -384,12 +387,6 @@ public class Scene {
                     villageObjects.remove(zelda);
                     castleObjects.add(zelda);
                 }
-            }
-        }
-        System.out.println(!villainTalks && !question1 && countSpaces== 7);
-        if(countSpaces == 7){
-            if(scene.getY() < -100){
-                link.setUp(true);
             }
         }
     }

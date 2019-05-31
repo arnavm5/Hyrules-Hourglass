@@ -48,11 +48,18 @@ public class Character extends Rectangle {
         isBlocking = blocking;
     }
 
-    public static void paintZelda(Graphics g, int x, Character chara){
+    public void paintZelda(Graphics g, int x ){
         Graphics2D g2d = (Graphics2D)g;
         ImageIcon character;
         character = new ImageIcon(Rectangle.class.getResource("Assets/Zelda/00" + x + ".png"));
-        g2d.drawImage(character.getImage(), chara.getX(), chara.getY(), chara.getW() - 10, chara.getH() - 14, null);
+        g2d.drawImage(character.getImage(), getX(), getY(), getW() - 10, getH() - 14, null);
+    }
+
+    public void paintVaati(Graphics g){
+        Graphics2D g2d = (Graphics2D)g;
+        ImageIcon character;
+        character = new ImageIcon(Rectangle.class.getResource("Assets/Extras/vaati.png"));
+        g2d.drawImage(character.getImage(), getX(), getY(), getW() - 10, getH() - 14, null);
     }
 
 }
