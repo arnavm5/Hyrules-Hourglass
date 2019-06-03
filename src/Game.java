@@ -22,10 +22,10 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
     private Scene scene;
     private int count;
     private AudioClip song;
+    private JFrame gui;
 
     //Default Constructor
-    public Game()
-    {
+    public Game() {
         //initializing instance variables
         WIDTH = 1000;
         HEIGHT = 500;
@@ -34,8 +34,6 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         int houseW = 450;
         int houseH = 350;
         link = new Player(WIDTH/2 - 25,HEIGHT/2 - 30, 100, 3, true);
-
-
 
         house = new Rectangle(WIDTH/2 - houseW/2, HEIGHT/2 - houseH/2, houseW, houseH, false);
         village = new Rectangle(-1, -342, 1000, 1000, false);
@@ -46,7 +44,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         count = 0;
 
         //Setting up the GUI
-        JFrame gui = new JFrame();
+        gui = new JFrame();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setTitle("Legend of Zelda: Hyrule's Hourglass");
         gui.setPreferredSize(new Dimension(WIDTH + 5, HEIGHT + 30));
@@ -61,34 +59,38 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
 
 
     }
+
     //This method will acknowledge user input
-    public void keyPressed(KeyEvent e)
-    {
+    public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         //System.out.println(key);
         link.keyPressedPlayer(key);
-        scene. sceneKeyPressed(key);
+        scene.sceneKeyPressed(key);
 
     }
-
 
     //All your UI drawing goes in here
-    public void paintComponent(Graphics g)
-    {
+    public void paintComponent(Graphics g) {
         g.setColor(Color.BLACK);
         g.fillRect(0,0, WIDTH, HEIGHT);
-        scene.paintScene(g, house, 0);
-        scene.paintScene(g, village, 1);
-        scene.paintScene(g, castle, 2);
-        scene.paintScene(g, forest, 3);
-        scene.paintText(g);
+        scene.paintScene(g, house, 0, link);
+        scene.paintScene(g, village, 1, link);
+        scene.paintScene(g, castle, 2, link);
+        scene.paintScene(g, forest, 3, link);
+        scene.paintText(g, link);
+        scene.paintSquirrels(g);
 
-
+        //for(Rectangle x:gameSceneObjects){
+        //    g.fillRect(x.getX(), x.getY(), x.getW(), x.getH());
+        //}
         //g.fillRect(gameSceneObjects.get(2).getX(), gameSceneObjects.get(2).getY(), gameSceneObjects.get(2).getW(), gameSceneObjects.get(2).getH());
         //All characters must be drawn last
-        this.link.paintPlayer(g);
+        if(!scene.getFaint() && !scene.isWin() && !scene.isLose()) {
+            link.paintPlayer(g);
+        }
 
     }
+
     public void sceneFixtures(){
         if(scene.isInHouse()) {
             if(count % 2 == 0){
@@ -126,7 +128,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
                 count++;
             }
             link.sceneCollision(castle, 56, 0);
-            castle.screenCollision(link, WIDTH/2, HEIGHT/2 - 20);
+            castle.screenCollision(link, WIDTH/2, HEIGHT/2);
             link.moveScene(gameSceneObjects, castle);
             link.movementSwitch(castle);
             //System.out.println("In Castle:" + scene.isInCastle());
@@ -139,7 +141,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
                 song.loop();
                 count++;
             }
-            link.sceneCollision(forest, 56, 0);
+            link.sceneCollision(forest, 56, 15);
             forest.screenCollision(link, 200, 100);
             link.moveScene(gameSceneObjects, forest);
 
@@ -150,60 +152,56 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
             link.recCollision(r, 5, 16);
         }
         link.movePlayer();
-        scene.sceneChangeExit(link);
+        scene.sceneChangeExit(link, village, forest);
         scene.sceneChangeEnter(link);
     }
 
 
-    public void loop()
-    {
+    public void loop() {
         link.timePressedMove();
         sceneFixtures();
         scene.storyHandler(link, castle);
         scene.autoCharacters(village, link, 1);
         scene.autoCharacters(castle, link, 2);
+        scene.formSquirrels(link);
+        scene.linkAttacking(link);
+        scene.closeWindow(gui, song);
+        scene.squirrelLostDec();
         repaint();
     }
 
     //These methods are required by the compiler.
     //You might write code in these methods depending on your goal.
-    public void keyTyped(KeyEvent e)
-    {
+    public void keyTyped(KeyEvent e) {
     }
 
-    public void keyReleased(KeyEvent e)
-    {
+    public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         link.keyReleasedPlayer(key);
         scene.sceneKeyReleased(key);
     }
 
-    public void mousePressed(MouseEvent e)
-    {
+    public void mousePressed(MouseEvent e) {
+        link.mousePressedPlayer(e.getButton());
     }
 
-    public void mouseReleased(MouseEvent e)
-    {
+    public void mouseReleased(MouseEvent e) {
+        link.mouseReleasedPlayer(e.getButton());
     }
 
-    public void mouseClicked(MouseEvent e)
-    {
+    public void mouseClicked(MouseEvent e) {
     }
 
-    public void mouseEntered(MouseEvent e)
-    {
+    public void mouseEntered(MouseEvent e) {
     }
 
-    public void mouseExited(MouseEvent e)
-    {
+    public void mouseExited(MouseEvent e) {
     }
 
-    public void mouseMoved(MouseEvent e)
-    {
+    public void mouseMoved(MouseEvent e) {
     }
 
-    public void mouseDragged(MouseEvent e)
-    {
+    public void mouseDragged(MouseEvent e) {
     }
 
     public void start(final int ticks){
@@ -222,8 +220,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
         gameThread.start();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Game g = new Game();
         g.start(60);
     }

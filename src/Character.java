@@ -59,7 +59,7 @@ public class Character extends Rectangle {
         Graphics2D g2d = (Graphics2D)g;
         ImageIcon character;
         character = new ImageIcon(Rectangle.class.getResource("Assets/Extras/vaati.png"));
-        g2d.drawImage(character.getImage(), getX(), getY(), getW() - 10, getH() - 14, null);
+        g2d.drawImage(character.getImage(), getX(), getY(), getW() + 20, getH() + 20, null);
     }
 
 }

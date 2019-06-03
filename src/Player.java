@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Player extends Character{
 
     private boolean isInside;
-    private boolean left, right, up, down, shift;
+    private boolean left, right, up, down, shift, leftClick;
     private int lastKey;
     private double timePressed;
 
@@ -22,6 +22,7 @@ public class Player extends Character{
         up = false;
         down = false;
         shift = false;
+        leftClick = false;
         lastKey = 1;
         timePressed = 0;
     }
@@ -50,6 +51,10 @@ public class Player extends Character{
         return shift;
     }
 
+    public boolean isleftClick() {
+        return leftClick;
+    }
+
     public void setInside(boolean inside) {
         isInside = inside;
     }
@@ -68,6 +73,10 @@ public class Player extends Character{
 
     public void setDown(boolean down) {
         this.down = down;
+    }
+
+    public void setLeftClick(boolean leftClick) {
+        this.leftClick = leftClick;
     }
 
     public void keyPressedPlayer(int key){
@@ -100,6 +109,19 @@ public class Player extends Character{
         }
     }
 
+    public void mousePressedPlayer(int button){
+        if(button == 1){
+            leftClick = true;
+        }
+    }
+
+    public void mouseReleasedPlayer(int button){
+        if(button == 1){
+            leftClick = false;
+        }
+    }
+
+
     public void keyReleasedPlayer(int key){
         //System.out.println(timePressed);
         if (key == 87) {
@@ -124,7 +146,7 @@ public class Player extends Character{
     }
 
     public void timePressedMove(){
-        if(up || down || left || right){
+        if(up || down || left || right || leftClick){
             timePressed += 0.4;
             if(timePressed > 11) {
                 timePressed = timePressed % 11;
@@ -187,7 +209,18 @@ public class Player extends Character{
         Graphics2D g2d = (Graphics2D)g;
         ImageIcon link = new ImageIcon(Player.class.getResource("Assets/Link/tile000.png"));
 
-        if(up) {
+        if(leftClick && timePressed < 6 && !right && !left){
+            if(lastKey == 3){
+                setW(67);
+                link = new ImageIcon(Player.class.getResource("Assets/Link/linkSwordLeft.png"));
+            }
+            else if(lastKey == 4){
+                setW(67);
+                link = new ImageIcon(Player.class.getResource("Assets/Link/linkSwordRight.png"));
+            }
+        }
+
+        else if(up) {
             for(int i = 48; i <= timePressed + 48; i++) {
                 link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
@@ -197,17 +230,18 @@ public class Player extends Character{
                 link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
         }
-        else if(left) {
+        else if(left && !leftClick) {
             for(int i = 36; i <= timePressed + 36; i++) {
                 link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
         }
-        else if(right) {
-            for(int i = 12; i <= timePressed + 12; i++) {
+        else if(right && !leftClick) {
+            for (int i = 12; i <= timePressed + 12; i++) {
                 link = new ImageIcon(Player.class.getResource("Assets/Link/tile0" + i + ".png"));
             }
         }
         else{
+             setW(50);
             if(lastKey == 1){
                 link = new ImageIcon(Player.class.getResource("Assets/Link/tile000.png"));
             }
@@ -222,7 +256,7 @@ public class Player extends Character{
             }
         }
         g2d.drawImage(link.getImage(), getX(), getY(), getW(), getH(), null);
-        g.setColor(Color.BLUE);
+        //g.setColor(Color.BLUE);
         //g.fillRect(getX(), getY(), getW(), getH());
     }
 
@@ -250,7 +284,7 @@ public class Player extends Character{
         }
     }
 
-     public void recCollision(Rectangle r, int wallPixLenX, int wallPixLenY){
+    public void recCollision(Rectangle r, int wallPixLenX, int wallPixLenY){
         int linkRX = getX() + wallPixLenX;
         int linkRW = getX() + getW() - wallPixLenX;
         int linkRY = getY() + wallPixLenY;
@@ -273,6 +307,7 @@ public class Player extends Character{
                     setY(r.getY() - getH());
                     System.out.println("Y Up");
                 }
+                setInside(true);
         }
     }
 
