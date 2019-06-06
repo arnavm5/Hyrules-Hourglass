@@ -824,6 +824,7 @@ public class Scene {
             gui.dispose();
             song.stop();
             System.exit(0);
+            //Exits system
         }
     }
 
