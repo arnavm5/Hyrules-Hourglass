@@ -159,6 +159,7 @@ public class Game extends JComponent implements KeyListener, MouseListener, Mous
 
     public void loop() {
         link.timePressedMove();
+        //link.colorCollision();
         sceneFixtures();
         scene.storyHandler(link, castle);
         scene.autoCharacters(village, link, 1);
